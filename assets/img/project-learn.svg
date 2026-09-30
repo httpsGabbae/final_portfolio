@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="LearnEngage learning platform mockup">
+  <rect width="1200" height="750" rx="24" fill="#f2f6f3"/>
+  <rect width="1200" height="150" fill="#0c3b2e"/>
+  <circle cx="80" cy="70" r="28" fill="#e9f2ec"/>
+  <text x="80" y="79" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#0c3b2e">L</text>
+  <text x="126" y="64" font-family="sans-serif" font-size="20" font-weight="bold" fill="#ffffff">LEARNENGAGE</text>
+  <text x="126" y="90" font-family="sans-serif" font-size="14" fill="#9fc3b3">INTERACTIVE LEARNING</text>
+  <text x="1050" y="80" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#dcf3e5">Lesson 4 of 6</text>
+  <!-- question card -->
+  <rect x="80" y="190" width="640" height="500" rx="18" fill="#ffffff"/>
+  <text x="120" y="244" font-family="sans-serif" font-size="15" fill="#1c7a4d" font-weight="bold">QUESTION 3 · MULTIPLE CHOICE</text>
+  <text x="120" y="292" font-family="sans-serif" font-size="27" font-weight="bold" fill="#10231b">Which practice makes a</text>
+  <text x="120" y="328" font-family="sans-serif" font-size="27" font-weight="bold" fill="#10231b">payroll run auditable?</text>
+  <g font-family="sans-serif" font-size="17">
+    <rect x="120" y="360" width="560" height="58" rx="12" fill="#f2f6f3"/>
+    <text x="144" y="396" fill="#10231b">Editing payslips after release</text>
+    <rect x="120" y="430" width="560" height="58" rx="12" fill="#1c7a4d"/>
+    <text x="144" y="466" fill="#ffffff">Keeping dated snapshots ✓</text>
+    <rect x="120" y="500" width="560" height="58" rx="12" fill="#f2f6f3"/>
+    <text x="144" y="536" fill="#10231b">Deleting old records</text>
+    <rect x="120" y="570" width="560" height="58" rx="12" fill="#f2f6f3"/>
+    <text x="144" y="606" fill="#10231b">Sharing the admin login</text>
+  </g>
+  <!-- score ring -->
+  <rect x="760" y="190" width="360" height="300" rx="18" fill="#ffffff"/>
+  <text x="796" y="240" font-family="sans-serif" font-size="16" font-weight="bold" fill="#10231b">Engagement Score</text>
+  <circle cx="940" cy="360" r="70" fill="none" stroke="#dde7e1" stroke-width="18"/>
+  <circle cx="940" cy="360" r="70" fill="none" stroke="#1c7a4d" stroke-width="18" stroke-linecap="round" stroke-dasharray="374 440" transform="rotate(-90 940 360)"/>
+  <text x="940" y="352" text-anchor="middle" font-family="sans-serif" font-size="40" font-weight="bold" fill="#10231b">85</text>
+  <text x="940" y="380" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#5d6f66">out of 100</text>
+  <!-- certificate -->
+  <rect x="760" y="510" width="360" height="180" rx="18" fill="#0c3b2e"/>
+  <text x="796" y="556" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ffffff">Certificate Ready</text>
+  <text x="796" y="584" font-family="sans-serif" font-size="14" fill="#9fc3b3">Payroll Basics · Completed</text>
+  <rect x="796" y="606" width="200" height="44" rx="10" fill="#1c7a4d"/>
+  <text x="896" y="634" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#ffffff">Print / Save PDF</text>
+</svg>
