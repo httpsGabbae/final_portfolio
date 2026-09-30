@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="LCC Payroll System dashboard mockup">
+  <rect width="1200" height="750" rx="24" fill="#f2f6f3"/>
+  <!-- sidebar -->
+  <rect width="260" height="750" fill="#0c3b2e"/>
+  <circle cx="52" cy="64" r="26" fill="#e9f2ec"/>
+  <text x="52" y="72" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#0c3b2e">L</text>
+  <text x="90" y="58" font-family="sans-serif" font-size="17" font-weight="bold" fill="#ffffff">LIPA CITY COLLEGES</text>
+  <text x="90" y="80" font-family="sans-serif" font-size="13" fill="#9fc3b3">PAYROLL SYSTEM</text>
+  <rect x="20" y="120" width="220" height="52" rx="12" fill="#1c7a4d"/>
+  <text x="44" y="152" font-family="sans-serif" font-size="17" fill="#ffffff">Dashboard</text>
+  <text x="44" y="200" font-family="sans-serif" font-size="16" fill="#cfe3d8">Employees</text>
+  <text x="44" y="244" font-family="sans-serif" font-size="16" fill="#cfe3d8">Add Employee</text>
+  <text x="44" y="288" font-family="sans-serif" font-size="16" fill="#cfe3d8">Payroll</text>
+  <text x="44" y="332" font-family="sans-serif" font-size="16" fill="#cfe3d8">Reports</text>
+  <circle cx="52" cy="660" r="20" fill="#1c7a4d"/>
+  <text x="82" y="656" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ffffff">Admin</text>
+  <text x="82" y="678" font-family="sans-serif" font-size="13" fill="#9fc3b3">Administrator</text>
+  <!-- header -->
+  <text x="300" y="78" font-family="sans-serif" font-size="30" font-weight="bold" fill="#10231b">Dashboard</text>
+  <text x="300" y="104" font-family="sans-serif" font-size="15" fill="#5d6f66">Welcome back, Admin! Here's what's happening today.</text>
+  <rect x="1040" y="48" width="120" height="44" rx="22" fill="#0c3b2e"/>
+  <text x="1100" y="76" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#ffffff">Admin</text>
+  <!-- stat cards -->
+  <g font-family="sans-serif">
+    <rect x="300" y="140" width="196" height="150" rx="16" fill="#ffffff"/>
+    <text x="322" y="180" font-size="14" fill="#5d6f66">Total Employees</text>
+    <text x="322" y="228" font-size="44" font-weight="bold" fill="#10231b">24</text>
+    <text x="322" y="262" font-size="13" fill="#1c7a4d">↑ 2 new this month</text>
+    <rect x="512" y="140" width="196" height="150" rx="16" fill="#ffffff"/>
+    <text x="534" y="180" font-size="14" fill="#5d6f66">Present Today</text>
+    <text x="534" y="228" font-size="44" font-weight="bold" fill="#10231b">20</text>
+    <text x="534" y="262" font-size="13" fill="#1c7a4d">83% attendance rate</text>
+    <rect x="724" y="140" width="196" height="150" rx="16" fill="#ffffff"/>
+    <text x="746" y="180" font-size="14" fill="#5d6f66">Departments</text>
+    <text x="746" y="228" font-size="44" font-weight="bold" fill="#10231b">6</text>
+    <text x="746" y="262" font-size="13" fill="#1c7a4d">All active</text>
+    <rect x="936" y="140" width="196" height="150" rx="16" fill="#ffffff"/>
+    <text x="958" y="180" font-size="14" fill="#5d6f66">Positions</text>
+    <text x="958" y="228" font-size="44" font-weight="bold" fill="#10231b">12</text>
+    <text x="958" y="262" font-size="13" fill="#1c7a4d">Across all departments</text>
+  </g>
+  <!-- activity table -->
+  <rect x="300" y="320" width="400" height="380" rx="16" fill="#ffffff"/>
+  <text x="326" y="360" font-family="sans-serif" font-size="17" font-weight="bold" fill="#10231b">Recent Employee Activity</text>
+  <g font-family="sans-serif" font-size="13">
+    <text x="326" y="402" fill="#5d6f66">Juan Dela Cruz</text>
+    <rect x="500" y="386" width="76" height="26" rx="13" fill="#dcf3e5"/><text x="538" y="404" text-anchor="middle" fill="#1c7a4d">Time In</text>
+    <text x="326" y="448" fill="#5d6f66">Ana Santos</text>
+    <rect x="500" y="432" width="76" height="26" rx="13" fill="#dcf3e5"/><text x="538" y="450" text-anchor="middle" fill="#1c7a4d">Time In</text>
+    <text x="326" y="494" fill="#5d6f66">Marco Lopez</text>
+    <rect x="500" y="478" width="80" height="26" rx="13" fill="#f3e2dc"/><text x="540" y="496" text-anchor="middle" fill="#a34a24">Time Out</text>
+    <text x="326" y="540" fill="#5d6f66">Kyla Ramirez</text>
+    <rect x="500" y="524" width="76" height="26" rx="13" fill="#dcf3e5"/><text x="538" y="542" text-anchor="middle" fill="#1c7a4d">Time In</text>
+    <text x="326" y="600" fill="#5d6f66">Payslips generated</text>
+    <text x="326" y="628" font-weight="bold" fill="#10231b">24 PDFs ready to print</text>
+  </g>
+  <!-- bar chart -->
+  <rect x="724" y="320" width="408" height="380" rx="16" fill="#ffffff"/>
+  <text x="750" y="360" font-family="sans-serif" font-size="17" font-weight="bold" fill="#10231b">Monthly Attendance</text>
+  <g fill="#1c7a4d">
+    <rect x="760" y="520" width="34" height="120" rx="6"/>
+    <rect x="810" y="480" width="34" height="160" rx="6"/>
+    <rect x="860" y="500" width="34" height="140" rx="6"/>
+    <rect x="910" y="540" width="34" height="100" rx="6"/>
+    <rect x="960" y="470" width="34" height="170" rx="6"/>
+    <rect x="1010" y="490" width="34" height="150" rx="6"/>
+  </g>
+  <g font-family="sans-serif" font-size="12" fill="#5d6f66" text-anchor="middle">
+    <text x="777" y="662">Jan</text><text x="827" y="662">Feb</text><text x="877" y="662">Mar</text>
+    <text x="927" y="662">Apr</text><text x="977" y="662">May</text><text x="1027" y="662">Jun</text>
+  </g>
+</svg>
