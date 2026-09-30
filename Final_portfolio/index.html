@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="John Aldrin Doruca (Gabbae), BSCS at Lipa City Colleges — PHP, MySQL, Supabase payroll, gym, and classroom compiler systems." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A0A0A'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' fill='%2322D3EE' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./styles-2.css" />
+<title>John Aldrin Doruca — Full-Stack Developer</title>
+<script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("v2-theme");if(t==="light")document.documentElement.dataset.theme="light";}catch(e){}</script>
+</head>
+<body>
+<div class="cursor-dot" aria-hidden="true"></div>
+
+<div class="progress is-idle" aria-hidden="true">
+  <small id="progressLabel">01 / 09</small>
+  <div class="bar"><i id="progressFill"></i></div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">John Aldrin Doruca<em>.</em></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#services">Skills</a>
+      <a href="#contact">Contact</a>
+      <a class="btn" href="#contact">Start a project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+    </nav>
+    <div class="nav-cta">
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to light mode">
+      <svg id="iconSun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg id="iconMoon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    </button>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <svg id="burgerOpen" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg id="burgerClose" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile" hidden>
+  <a href="#work">Work</a>
+  <a href="#about">About</a>
+  <a href="#services">Skills</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <section class="hero wrap" id="top" data-sec>
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-core">
+      <div class="hero-grid">
+      <div>
+      <p class="status hero-fade"><i></i>AVAILABLE FOR PROJECTS · LIPA CITY, PH</p>
+      <h1 class="giant">
+        <span class="mask"><span class="mask-in">John Aldrin</span></span>
+        <span class="mask"><span class="mask-in">Doruca</span></span>
+        <span class="mask"><span class="mask-in outline">Full-Stack Dev</span></span>
+      </h1>
+      <p class="hero-sub hero-fade">Second-year BSCS at Lipa City Colleges. I build school payroll, gym management, and classroom compiler systems in PHP + MySQL + Supabase — auth, CRUD, and real deployments on XAMPP.</p>
+      <div class="hero-row hero-fade">
+        <a class="btn btn-solid" href="#work">View my work <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+        <a class="btn" href="#contact">Contact me</a>
+      </div>
+      </div>
+      <figure class="hero-photo hero-fade">
+        <img src="./assets/img/profile.jpg" alt="Photo of John Aldrin Doruca" width="480" height="600" />
+        <figcaption class="mono">John Aldrin Doruca — Lipa City, PH</figcaption>
+      </figure>
+      </div>
+      <div class="scroll-hint hero-fade"><span>Scroll to explore</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+    </div>
+  </section>
+
+  <!-- WORK HEADER -->
+  <section class="work-head wrap" data-sec aria-label="Selected work">
+    <p class="kicker"><b>01</b> — Selected work</p>
+    <h2 class="giant drift">Selected</h2>
+    <h2 class="giant drift ghost">Work</h2>
+  </section>
+
+  <!-- PINNED SHOWCASE -->
+  <section id="work" data-sec aria-label="Project showcase">
+    <div class="stage-pin" id="stagePin">
+      <div class="stage" id="stage">
+        <article class="shot" data-shot>
+          <div class="shot-copy">
+            <div class="shot-num" aria-hidden="true">01</div>
+            <h3>LCC Payroll System</h3>
+            <p class="shot-meta">Web Application / PHP + MySQL — 2026 · In progress</p>
+            <p class="desc">Manual payroll + paper payslips → web system with login, employee records, payroll processing, attendance, reports, and one-click PDF payslips for Lipa City Colleges.</p>
+            <div class="tags"><span>PHP</span><span>MySQL</span><span>FPDF</span></div>
+            <a class="btn" href="https://github.com/httpsGabbae/Final-Lipa-City-Colleges-Pay-Roll-System" target="_blank" rel="noopener">View on GitHub <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+          </div>
+          <div class="visual has-img" data-cursor="view"><img src="./assets/img/project-payroll.svg" alt="LCC Payroll System dashboard" loading="lazy" width="1200" height="750" /></div>
+        </article>
+        <article class="shot" data-shot>
+          <div class="shot-copy">
+            <div class="shot-num" aria-hidden="true">02</div>
+            <h3>LMS Code Compiler</h3>
+            <p class="shot-meta">Developer Tool / Classroom IDE — 2025 · In progress</p>
+            <p class="desc">No classroom IDE → XAMPP-native compiler with Monaco editor, Judge0 run (Python/PHP/JS/Java/C#/C/C++), 5s autosnapshot polling, and frozen submit for professors.</p>
+            <div class="tags"><span>Monaco</span><span>Judge0</span><span>PHP</span></div>
+            <a class="btn" href="https://github.com/httpsGabbae/LMS-Code-Compiler" target="_blank" rel="noopener">View on GitHub <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+          </div>
+          <div class="visual has-img" data-cursor="view"><img src="./assets/img/project-compiler.svg" alt="LMS Code Compiler IDE" loading="lazy" width="1200" height="750" /></div>
+        </article>
+        <article class="shot" data-shot>
+          <div class="shot-copy">
+            <div class="shot-num" aria-hidden="true">03</div>
+            <h3>FitnessHub Gym System</h3>
+            <p class="shot-meta">Web Application / PHP + MySQL — 2025</p>
+            <p class="desc">Spreadsheet member chaos → role logins with admin/member dashboards, add_member, find_trainer, view_member, and payment tracking.</p>
+            <div class="tags"><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+            <a class="btn" href="https://github.com/httpsGabbae/fitnesshub" target="_blank" rel="noopener">View on GitHub <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+          </div>
+          <div class="visual has-img" data-cursor="view"><img src="./assets/img/project-fitness.svg" alt="FitnessHub gym system dashboard" loading="lazy" width="1200" height="750" /></div>
+        </article>
+        <article class="shot" data-shot>
+          <div class="shot-copy">
+            <div class="shot-num" aria-hidden="true">04</div>
+            <h3>LearnEngage Website</h3>
+            <p class="shot-meta">Frontend / Interaction — 2024</p>
+            <p class="desc">Passive learning pages → interactive engagement flow: questions, engagement score, results, study tips, and printable certificate — pure frontend.</p>
+            <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <a class="btn" href="https://github.com/httpsGabbae/LearnEngageWebsite" target="_blank" rel="noopener">View on GitHub <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+          </div>
+          <div class="visual has-img" data-cursor="view"><img src="./assets/img/project-learn.svg" alt="LearnEngage learning platform" loading="lazy" width="1200" height="750" /></div>
+        </article>
+        <div class="stage-count" aria-hidden="true"><span id="stageCount">01 / 04</span></div>
+      </div>
+      <div class="shot-dots" id="shotDots" aria-label="Project slides">
+        <button type="button" aria-label="Show project 1"></button>
+        <button type="button" aria-label="Show project 2"></button>
+        <button type="button" aria-label="Show project 3"></button>
+        <button type="button" aria-label="Show project 4"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORIZONTAL ARCHIVE -->
+  <section class="hwrap" data-sec aria-label="Project archive" id="archive" style="padding:14vh 0">
+    <div class="wrap" style="margin-bottom:48px">
+      <p class="kicker"><b>02</b> — Archive, scroll-driven</p>
+    </div>
+    <div class="htrack" id="htrack">
+      <article class="hcard">
+        <div class="visual has-img" data-cursor="view"><img src="./assets/img/project-payroll.svg" alt="LCC Payroll System dashboard" loading="lazy" width="1200" height="750" /></div>
+        <p class="shot-meta" style="margin-top:18px">01 — PHP · MySQL · FPDF · 2026</p>
+        <h3 class="hcard-title">LCC Payroll System</h3>
+        <a class="btn" style="margin-top:18px" href="https://github.com/httpsGabbae/Final-Lipa-City-Colleges-Pay-Roll-System" target="_blank" rel="noopener">View <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+      </article>
+      <article class="hcard">
+        <div class="visual has-img" data-cursor="view"><img src="./assets/img/project-compiler.svg" alt="LMS Code Compiler IDE" loading="lazy" width="1200" height="750" /></div>
+        <p class="shot-meta" style="margin-top:18px">02 — Monaco · Judge0 · PHP · 2025</p>
+        <h3 class="hcard-title">LMS Code Compiler</h3>
+        <a class="btn" style="margin-top:18px" href="https://github.com/httpsGabbae/LMS-Code-Compiler" target="_blank" rel="noopener">View <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+      </article>
+      <article class="hcard">
+        <div class="visual has-img" data-cursor="view"><img src="./assets/img/project-fitness.svg" alt="FitnessHub gym system dashboard" loading="lazy" width="1200" height="750" /></div>
+        <p class="shot-meta" style="margin-top:18px">03 — PHP · MySQL · Bootstrap · 2025</p>
+        <h3 class="hcard-title">FitnessHub Gym System</h3>
+        <a class="btn" style="margin-top:18px" href="https://github.com/httpsGabbae/fitnesshub" target="_blank" rel="noopener">View <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+      </article>
+      <article class="hcard">
+        <div class="visual has-img" data-cursor="view"><img src="./assets/img/project-learn.svg" alt="LearnEngage learning platform" loading="lazy" width="1200" height="750" /></div>
+        <p class="shot-meta" style="margin-top:18px">04 — HTML · CSS · JavaScript · 2024</p>
+        <h3 class="hcard-title">LearnEngage Website</h3>
+        <a class="btn" style="margin-top:18px" href="https://github.com/httpsGabbae/LearnEngageWebsite" target="_blank" rel="noopener">View <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+      </article>
+    </div>
+    <div class="hbar" aria-hidden="true"><i id="hfill"></i></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" data-sec class="about wrap">
+    <p class="kicker"><b>03</b> — About</p>
+    <div class="about-top">
+      <h2 class="about-big">
+        <span class="reveal-line">BSCS student who learns </span>
+        <span class="reveal-line">by shipping real school systems, </span>
+        <span class="reveal-line">not tutorials.</span>
+      </h2>
+      <figure class="about-photo">
+        <img src="./assets/img/profile.jpg" alt="Photo of John Aldrin Doruca" width="480" height="480" loading="lazy" onerror="this.closest('figure').style.display='none'" />
+        <figcaption class="mono">gabbae — Lipa City, PH</figcaption>
+      </figure>
+    </div>
+    <div class="about-grid">
+      <div class="about-cell"><h4>Who I am</h4><p>John Aldrin Doruca (Gabbae), second-year BSCS at Lipa City Colleges. PHP backends, MySQL/Supabase data, clean frontends — growing into cybersecurity + full-stack development.</p></div>
+      <div class="about-cell"><h4>Education</h4><p>Lipa City Colleges — BS Computer Science, 2nd year, 2024 to present. Cybersecurity track, full-stack systems focus.</p></div>
+      <div class="about-cell"><h4>Proof — Hackathon</h4><p>3rd Place, department hackathon, competing with fellow BSCS teams at Lipa City Colleges.</p></div>
+      <div class="about-cell"><h4>Proof — In production</h4><p>LCC Payroll — employee records, payroll runs, and one-click PDF payslips built for the school. Plus SMX PCTA event certification.</p></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="services" data-sec class="services wrap">
+    <p class="kicker"><b>04</b> — Skills</p>
+    <div class="skills-grid">
+      <div class="skill"><div class="skill-top"><strong>PHP + MySQL</strong><span class="mono">90%</span></div><div class="meter"><i data-w="90"></i></div><p>Payroll, gym, and compiler backends.</p></div>
+      <div class="skill"><div class="skill-top"><strong>Git + GitHub</strong><span class="mono">92%</span></div><div class="meter"><i data-w="92"></i></div><p>Where I excel — version control daily.</p></div>
+      <div class="skill"><div class="skill-top"><strong>HTML / CSS / Bootstrap</strong><span class="mono">88%</span></div><div class="meter"><i data-w="88"></i></div><p>Clean, readable interfaces.</p></div>
+      <div class="skill"><div class="skill-top"><strong>Supabase</strong><span class="mono">80%</span></div><div class="meter"><i data-w="80"></i></div><p>Auth and data beyond MySQL.</p></div>
+      <div class="skill"><div class="skill-top"><strong>JavaScript</strong><span class="mono">78%</span></div><div class="meter"><i data-w="78"></i></div><p>Interaction, tooling, Judge0 runners.</p></div>
+      <div class="skill"><div class="skill-top"><strong>XAMPP + Tooling</strong><span class="mono">85%</span></div><div class="meter"><i data-w="85"></i></div><p>phpMyAdmin, Postman, FPDF reports.</p></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section data-sec class="process wrap" aria-label="Workflow">
+    <p class="kicker"><b>05</b> — How I work</p>
+    <div class="phase-grid">
+      <div class="phase"><span class="phase-n">01</span><h3>Diagnose</h3><p>Figure out what we're actually trying to fix — users, friction, goals.</p></div>
+      <div class="phase"><span class="phase-n">02</span><h3>Map</h3><p>Roles, CRUD, auth, and the happy path before any code.</p></div>
+      <div class="phase"><span class="phase-n">03</span><h3>Design</h3><p>Clear hierarchy, readable tables, working forms.</p></div>
+      <div class="phase"><span class="phase-n">04</span><h3>Build</h3><p>PHP + MySQL on XAMPP, Supabase where it fits.</p></div>
+      <div class="phase"><span class="phase-n">05</span><h3>Connect</h3><p>Sessions, validation, PDF exports, Judge0 runs — nothing breaks after click.</p></div>
+      <div class="phase"><span class="phase-n">06</span><h3>Launch</h3><p>Test it. Break it. Fix it. Checked on desktop and mobile before demo day.</p></div>
+    </div>
+  </section>
+
+  <!-- BIG TYPE -->
+  <section data-sec aria-hidden="true" style="padding:10vh 0;overflow:clip">
+    <div class="wrap">
+      <div class="giant drift">Ship</div>
+      <div class="giant drift ghost">Test</div>
+      <div class="giant drift">Launch</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" data-sec class="contact wrap">
+    <div class="sec-head"><div><p class="kicker"><b>06</b> — Contact</p><h2 class="contact-title">Say hi — let&apos;s talk.</h2></div><p class="sec-sub">Form is demo + mailto fallback. GitHub is fastest.</p></div>
+    <div class="contact-grid">
+      <div class="crows">
+        <div class="crow"><span class="cic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span><span><span class="mono">Email</span><strong id="emailText">j.doruca109@gmail.com</strong></span><button class="btn btn-sm" id="copyEmail" type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>Copy</button></div>
+        <a class="crow" href="https://github.com/httpsGabbae" target="_blank" rel="noopener"><span class="cic"><svg width="17" height="17" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg></span><span><span class="mono">GitHub</span><strong>github.com/httpsGabbae</strong></span><svg class="go" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+        <a class="crow" href="https://www.linkedin.com/in/johnaldrindoruca" target="_blank" rel="noopener"><span class="cic soft"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg></span><span><span class="mono">LinkedIn</span><strong>in/johnaldrindoruca</strong></span><svg class="go" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+        <a class="crow" href="https://m.me/johnaldrindoruca" target="_blank" rel="noopener"><span class="cic soft"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.14 2 11.25c0 2.92 1.56 5.55 4 7.33V22l3.66-2.02c.98.27 2.02.42 3.1.42h.24c5.52 0 10-4.14 10-9.25S17.52 2 12 2zm1.08 12.5-2.58-2.75-5.02 2.75 5.52-5.86 2.64 2.75 4.96-2.75-5.52 5.86z"/></svg></span><span><span class="mono">Messenger</span><strong>Message me</strong></span><svg class="go" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+        <div class="crow"><span class="cic soft"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span><span class="mono">Location</span><strong>Lipa City, PH</strong></span></div>
+      </div>
+    <form class="contact-form" id="contactForm" novalidate>
+      <div class="frow">
+        <div><label class="mono" for="cfName">Name</label><input id="cfName" name="name" required placeholder="Your name" autocomplete="name" /></div>
+        <div><label class="mono" for="cfEmail">Email</label><input id="cfEmail" name="email" type="email" required placeholder="you@mail.com" autocomplete="email" /></div>
+      </div>
+      <div><label class="mono" for="cfMsg">Message</label><textarea id="cfMsg" name="message" rows="4" required placeholder="Hi Gabbae, I saw your payroll system and…"></textarea></div>
+      <div class="hero-row">
+        <button class="btn btn-solid" id="cfSend" type="submit">Send message</button>
+        <button class="btn" id="copyEmail" type="button">Copy email</button>
+      </div>
+      <p class="form-ok" id="cfOk" hidden>Thanks! Opening your mail app — or reach me at j.doruca109@gmail.com.</p>
+    </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Gabbae — John Aldrin Doruca · <span class="mono" id="manilaClock">Lipa City, PH</span></span>
+    <span>© 2026 John Aldrin Doruca</span>
+    <button type="button" id="toTop">Back to top <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg></button>
+  </div>
+</footer>
+
+<div class="chat-fab-wrap">
+  <div class="chat-widget" id="chatWidget" hidden>
+    <div class="chat-head">
+      <div><strong>Gabbae Bot</strong><span class="mono">answers about stack · rate · who I am</span></div>
+      <span class="mono online">● online</span>
+      <button class="chat-close" id="chatClose" type="button" aria-label="Close chat">✕</button>
+    </div>
+    <div class="chat-msgs" id="chatMsgs" aria-live="polite">
+      <div class="msg bot">Hi! I'm Gabbae Bot. Ask me about John's stack, rate, or who he is.</div>
+    </div>
+    <div class="chips">
+      <button type="button" data-q="What is your stack?">What is your stack?</button>
+      <button type="button" data-q="How much is your rate?">How much is your rate?</button>
+      <button type="button" data-q="Who are you?">Who are you?</button>
+    </div>
+    <form class="chat-form" id="chatForm">
+      <input id="chatInput" type="text" placeholder="Type stack, rate, or who are you…" autocomplete="off" aria-label="Ask about me" />
+      <button class="btn btn-solid" type="submit" aria-label="Send"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></button>
+    </form>
+  </div>
+  <button id="chatFab" type="button" aria-expanded="false" aria-controls="chatWidget"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8Z"/></svg><span>Ask me</span></button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./app-2.js"></script>
+</body>
+</html>

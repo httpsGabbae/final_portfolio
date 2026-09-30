@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="FitnessHub gym system dashboard mockup">
+  <rect width="1200" height="750" rx="24" fill="#f2f6f3"/>
+  <rect width="260" height="750" fill="#0c3b2e"/>
+  <circle cx="52" cy="64" r="26" fill="#e9f2ec"/>
+  <text x="52" y="73" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#0c3b2e">F</text>
+  <text x="90" y="58" font-family="sans-serif" font-size="17" font-weight="bold" fill="#ffffff">FITNESSHUB</text>
+  <text x="90" y="80" font-family="sans-serif" font-size="13" fill="#9fc3b3">GYM SYSTEM</text>
+  <rect x="20" y="120" width="220" height="52" rx="12" fill="#1c7a4d"/>
+  <text x="44" y="152" font-family="sans-serif" font-size="17" fill="#ffffff">Dashboard</text>
+  <text x="44" y="200" font-family="sans-serif" font-size="16" fill="#cfe3d8">Members</text>
+  <text x="44" y="244" font-family="sans-serif" font-size="16" fill="#cfe3d8">Trainers</text>
+  <text x="44" y="288" font-family="sans-serif" font-size="16" fill="#cfe3d8">Payments</text>
+  <text x="44" y="332" font-family="sans-serif" font-size="16" fill="#cfe3d8">Schedule</text>
+  <circle cx="52" cy="660" r="20" fill="#1c7a4d"/>
+  <text x="82" y="656" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ffffff">Coach</text>
+  <text x="82" y="678" font-family="sans-serif" font-size="13" fill="#9fc3b3">Administrator</text>
+  <text x="300" y="78" font-family="sans-serif" font-size="30" font-weight="bold" fill="#10231b">Dashboard</text>
+  <text x="300" y="104" font-family="sans-serif" font-size="15" fill="#5d6f66">Welcome back! Here's your gym today.</text>
+  <rect x="1000" y="48" width="160" height="44" rx="22" fill="#0c3b2e"/>
+  <text x="1080" y="76" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#ffffff">+ Add Member</text>
+  <g font-family="sans-serif">
+    <rect x="300" y="140" width="196" height="150" rx="16" fill="#ffffff"/>
+    <text x="322" y="180" font-size="14" fill="#5d6f66">Total Members</text>
+    <text x="322" y="228" font-size="44" font-weight="bold" fill="#10231b">132</text>
+    <text x="322" y="262" font-size="13" fill="#1c7a4d">↑ 12 this month</text>
+    <rect x="512" y="140" width="196" height="150" rx="16" fill="#ffffff"/>
+    <text x="534" y="180" font-size="14" fill="#5d6f66">Trainers</text>
+    <text x="534" y="228" font-size="44" font-weight="bold" fill="#10231b">8</text>
+    <text x="534" y="262" font-size="13" fill="#1c7a4d">4 on shift now</text>
+    <rect x="724" y="140" width="196" height="150" rx="16" fill="#ffffff"/>
+    <text x="746" y="180" font-size="14" fill="#5d6f66">Active Plans</text>
+    <text x="746" y="228" font-size="44" font-weight="bold" fill="#10231b">96</text>
+    <text x="746" y="262" font-size="13" fill="#1c7a4d">73% renewal rate</text>
+    <rect x="936" y="140" width="196" height="150" rx="16" fill="#ffffff"/>
+    <text x="958" y="180" font-size="14" fill="#5d6f66">Collected</text>
+    <text x="958" y="228" font-size="40" font-weight="bold" fill="#10231b">₱48k</text>
+    <text x="958" y="262" font-size="13" fill="#1c7a4d">This month</text>
+  </g>
+  <rect x="300" y="320" width="400" height="380" rx="16" fill="#ffffff"/>
+  <text x="326" y="360" font-family="sans-serif" font-size="17" font-weight="bold" fill="#10231b">Find a Trainer</text>
+  <g font-family="sans-serif" font-size="14">
+    <rect x="326" y="384" width="348" height="64" rx="12" fill="#f2f6f3"/>
+    <text x="344" y="410" font-weight="bold" fill="#10231b">Rico Santos</text>
+    <text x="344" y="432" font-size="13" fill="#5d6f66">Strength · 4.9 rating</text>
+    <rect x="326" y="460" width="348" height="64" rx="12" fill="#f2f6f3"/>
+    <text x="344" y="486" font-weight="bold" fill="#10231b">Mia Cruz</text>
+    <text x="344" y="508" font-size="13" fill="#5d6f66">Cardio · 4.8 rating</text>
+    <rect x="326" y="536" width="348" height="64" rx="12" fill="#1c7a4d"/>
+    <text x="344" y="562" font-weight="bold" fill="#ffffff">Jao Reyes</text>
+    <text x="344" y="584" font-size="13" fill="#dcf3e5">Boxing · Available now</text>
+  </g>
+  <rect x="724" y="320" width="408" height="380" rx="16" fill="#ffffff"/>
+  <text x="750" y="360" font-family="sans-serif" font-size="17" font-weight="bold" fill="#10231b">Weekly Check-ins</text>
+  <g fill="#1c7a4d">
+    <rect x="760" y="540" width="30" height="100" rx="6"/>
+    <rect x="804" y="500" width="30" height="140" rx="6"/>
+    <rect x="848" y="520" width="30" height="120" rx="6"/>
+    <rect x="892" y="470" width="30" height="170" rx="6"/>
+    <rect x="936" y="490" width="30" height="150" rx="6"/>
+    <rect x="980" y="450" width="30" height="190" rx="6"/>
+    <rect x="1024" y="510" width="30" height="130" rx="6"/>
+  </g>
+  <g font-family="sans-serif" font-size="12" fill="#5d6f66" text-anchor="middle">
+    <text x="775" y="662">M</text><text x="819" y="662">T</text><text x="863" y="662">W</text>
+    <text x="907" y="662">T</text><text x="951" y="662">F</text><text x="995" y="662">S</text><text x="1039" y="662">S</text>
+  </g>
+</svg>
