@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./styles-2.css" />
+<title>Log in — Private</title>
+<script>try{var t=localStorage.getItem("v2-theme");if(t==="light")document.documentElement.dataset.theme="light";}catch(e){}</script>
+</head>
+<body>
+<div class="cursor-dot" aria-hidden="true"></div>
+
+<main class="wrap admin login-page">
+  <p class="kicker"><b>···</b> — Private area</p>
+  <form class="contact-form admin-login" id="loginForm">
+    <h1 class="admin-title">Welcome back.</h1>
+    <p class="mono dim">Owner access only. Everyone else: the portfolio is <a href="./index.html">that way</a>.</p>
+    <div><label class="mono" for="adminEmail">Admin email</label><input id="adminEmail" type="email" required autocomplete="username" placeholder="you@mail.com" /></div>
+    <div><label class="mono" for="adminPass">Password</label><input id="adminPass" type="password" required autocomplete="current-password" placeholder="••••••••" /></div>
+    <div class="hero-row"><button class="btn btn-solid" type="submit" id="loginBtn">Log in</button><a class="btn" href="./index.html">Back to site</a></div>
+    <p class="form-ok" id="loginErr" hidden></p>
+  </form>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function () {
+  "use strict";
+  var SUPABASE_URL = "https://sbqxizjtgdfixvnwtbry.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_jky21GxgSF35_XYQWRnnbw_na-NBhOW";
+  var ADMIN_EMAIL = "gabbae.dev@gmail.com";
+  var $ = function (s) { return document.querySelector(s); };
+  var db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  (function cursor() {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var dot = document.querySelector(".cursor-dot");
+    if (!dot) return;
+    var t = 0;
+    window.addEventListener("pointermove", function (e) {
+      document.body.classList.add("cursor-on");
+      document.body.classList.remove("cursor-idle");
+      clearTimeout(t);
+      t = setTimeout(function () { document.body.classList.add("cursor-idle"); }, 2500);
+      dot.style.transform = "translate(" + e.clientX + "px," + e.clientY + "px) translate(-50%,-50%)";
+    }, { passive: true });
+  })();
+
+  function showErr(t) { var e = $("#loginErr"); e.textContent = t; e.hidden = false; }
+  function friendlyError(msg) {
+    if (/invalid login credentials/i.test(msg)) return "Wrong email or password. If you never made the account: Supabase → Authentication → Add user → gabbae.dev@gmail.com.";
+    if (/email not confirmed/i.test(msg)) return "Account exists but isn't confirmed. In Supabase → Authentication → Users, tick Auto Confirm (or confirm the user).";
+    return msg;
+  }
+
+  db.auth.getSession().then(function (res) {
+    var email = res.data.session && res.data.session.user && res.data.session.user.email;
+    if (email && email.toLowerCase() === ADMIN_EMAIL) window.location.replace("./admin.html");
+  });
+
+  $("#loginForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var btn = $("#loginBtn");
+    btn.disabled = true; btn.textContent = "Logging in…";
+    db.auth.signInWithPassword({ email: $("#adminEmail").value.trim(), password: $("#adminPass").value })
+      .then(function (res) {
+        if (res.error) { showErr(friendlyError(res.error.message)); return; }
+        if ((res.data.user && res.data.user.email || "").toLowerCase() !== ADMIN_EMAIL) {
+          db.auth.signOut();
+          showErr("This account is not the inbox owner.");
+          return;
+        }
+        window.location.replace("./admin.html");
+      })
+      .catch(function (err) { showErr(friendlyError(err.message)); })
+      .then(function () { btn.disabled = false; btn.textContent = "Log in"; });
+  });
+})();
+</script>
+</body>
+</html>

@@ -288,6 +288,7 @@
       scrollTrigger: { trigger: card, start: "top 88%" },
     });
     const bar = $(".meter i", card);
+    if (!bar) return;
     gsap.fromTo(bar, { width: "0%" }, {
       width: bar.dataset.w + "%", duration: 1, ease: "power3.out",
       scrollTrigger: { trigger: card, start: "top 85%" },
@@ -372,9 +373,9 @@
   "use strict";
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => Array.prototype.slice.call(document.querySelectorAll(s));
-  const A_STACK = "PHP, Front End, I excel in Github and Supabase. Mostly Full Stack.";
-  const A_RATE = "Send me a message and lets talk about it! Scrolling you to the contact section now.";
-  const A_WHO = "I am John Aldrin Doruca, a student at Lipa City Colleges studying computer science and aspiring as part of cybersecurity and full stack developer.";
+  const A_STACK = "John works across the full stack: PHP and MySQL on the backend, HTML, CSS, Bootstrap, and JavaScript on the frontend — with Git and GitHub where he excels, plus Supabase.";
+  const A_RATE = "Send him a message and let's discuss it! Taking you to the contact section now.";
+  const A_WHO = "John Aldrin Doruca is a Computer Science student at Lipa City Colleges, pursuing both cybersecurity and full-stack development.";
   const msgs = $("#chatMsgs"), form = $("#chatForm"), input = $("#chatInput");
   const widget = $("#chatWidget"), fab = $("#chatFab");
   function addMsg(text, who) {
@@ -389,13 +390,13 @@
     if (/stack|tech|tools|language|supabase|php|frontend|front-end/.test(t)) return { type: "text", text: A_STACK };
     if (/rate|price|cost|magkano|bayad|fee|salary|how much/.test(t)) return { type: "rate", text: A_RATE };
     if (/who are you|sino|your name|yourself|about you|who is/.test(t)) return { type: "text", text: A_WHO };
-    if (/educ|school|college|lipa|course|study|bscs/.test(t)) return { type: "text", text: "2nd-year BSCS at Lipa City Colleges, Lipa City PH. Focus: full-stack systems + cybersecurity track." };
-    if (/skill/.test(t)) return { type: "text", text: "Top skills: " + A_STACK + " Also MySQL, Bootstrap, Git, Laravel basics." };
-    if (/project|work|portfolio|github|repo/.test(t)) return { type: "text", text: "Featured: Final LCC Payroll, FitnessHub gym, LMS Code Compiler (Monaco+Judge0), LearnEngage frontend. See #work — all on github.com/httpsGabbae." };
-    if (/hackathon|achiev|award|lead/.test(t)) return { type: "text", text: "3rd placer — department hackathon. Plus shipped 4 school systems end-to-end." };
-    if (/contact|email|hire|message|messenger|linkedin/.test(t)) return { type: "contact", text: "Email me at j.doruca109@gmail.com or use the links below — taking you there." };
-    if (/hi|hello|hey|kumusta/.test(t)) return { type: "text", text: "Hello! Ask me: What is your stack? / How much is your rate? / Who are you?" };
-    return { type: "text", text: "I answer best about stack, rate, or who I am — tap a preset above or type those keywords." };
+    if (/educ|school|college|lipa|course|study|bscs/.test(t)) return { type: "text", text: "He's a second-year BSCS student at Lipa City Colleges in Lipa City, PH, focused on systems." };
+    if (/skill/.test(t)) return { type: "text", text: "His strongest skills: PHP and MySQL, Git and GitHub, Supabase, and frontend development with HTML, CSS, and Bootstrap." };
+    if (/project|work|portfolio|github|repo/.test(t)) return { type: "text", text: "Featured work: the LCC Payroll System, FitnessHub gym platform, LMS Code Compiler (Monaco + Judge0), and the LearnEngage site — all on github.com/httpsGabbae. Scroll to the work section to explore them." };
+    if (/hackathon|achiev|award|lead/.test(t)) return { type: "text", text: "He placed 3rd in his department hackathon and has shipped four complete school systems end to end." };
+    if (/contact|email|hire|message|messenger|linkedin/.test(t)) return { type: "contact", text: "You can reach him at j.doruca109@gmail.com or through the links below — taking you there now." };
+    if (/hi|hello|hey|kumusta/.test(t)) return { type: "text", text: "Hello! Try one of these: What is your stack? / What are your rates? / Who is John?" };
+    return { type: "text", text: "I answer best about his stack, rates, or background — tap a suggestion above or type one of those keywords." };
   }
   function ask(q) {
     if (!q.trim()) return;
