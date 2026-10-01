@@ -12,43 +12,61 @@
 <script>try{var t=localStorage.getItem("v2-theme");if(t==="light")document.documentElement.dataset.theme="light";}catch(e){}</script>
 </head>
 <body>
+<div class="cursor-dot" aria-hidden="true"></div>
+
 <main class="wrap admin">
   <p class="kicker"><b>···</b> — Private inbox</p>
 
-  <form class="contact-form admin-login" id="loginForm">
-    <h1 class="admin-title">Welcome back.</h1>
-    <div><label class="mono" for="adminEmail">Admin email</label><input id="adminEmail" type="email" required autocomplete="username" placeholder="you@mail.com" /></div>
-    <div><label class="mono" for="adminPass">Password</label><input id="adminPass" type="password" required autocomplete="current-password" placeholder="••••••••" /></div>
-    <div class="hero-row"><button class="btn btn-solid" type="submit" id="loginBtn">Log in</button></div>
-    <p class="form-ok" id="loginErr" hidden></p>
-  </form>
+  <p class="mono" id="authNote">Checking session…</p>
 
   <div id="inbox" hidden>
-    <div class="inbox-head">
-      <div>
-        <h1 class="admin-title">Inbox</h1>
-        <div class="stat-chips">
-          <span class="chip" id="statTotal">0 total</span>
-          <span class="chip hot" id="statUnread">0 unread</span>
-          <span class="chip" id="statWeek">0 this week</span>
+    <div class="dash">
+      <aside class="side" aria-label="Inbox navigation">
+        <div class="side-brand"><span class="side-logo">G</span><span><strong>Gabbae</strong><span class="mono">MESSAGE INBOX</span></span></div>
+        <button type="button" class="side-link on" data-view="all"><span>Inbox</span><b id="navTotal">0</b></button>
+        <button type="button" class="side-link" data-view="unread"><span>Unread</span><b id="navUnread">0</b></button>
+        <button type="button" class="side-link" data-view="read"><span>Read</span><b id="navRead">0</b></button>
+        <div class="side-foot">
+          <span class="mono" id="sideUser">admin</span>
+          <button type="button" id="logoutBtn">Log out</button>
         </div>
+      </aside>
+
+      <div class="dash-main">
+        <div class="dash-head">
+          <div><h1 class="admin-title">Dashboard</h1><p class="mono" id="dashDate">Welcome back! Here&apos;s what&apos;s happening today.</p></div>
+          <button class="btn btn-sm" id="refreshBtn" type="button">Refresh</button>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat"><span class="mono">Total Messages</span><strong id="statTotal">0</strong><span class="mono dim" id="statTotalSub">all time</span></div>
+          <div class="stat"><span class="mono">Unread</span><strong id="statUnread">0</strong><span class="mono dim">needs a reply</span></div>
+          <div class="stat"><span class="mono">This Week</span><strong id="statWeek">0</strong><span class="mono dim">last 7 days</span></div>
+          <div class="stat"><span class="mono">Read Rate</span><strong id="statRate">0%</strong><span class="mono dim">handled</span></div>
+        </div>
+
+        <div class="dash-panels">
+          <div class="panel">
+            <div class="panel-head"><strong>Recent Activity</strong><span class="mono">latest first</span></div>
+            <div id="activityRows" class="activity"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><strong>Messages / Day</strong><span class="mono">last 7 days</span></div>
+            <div class="bars" id="bars"></div>
+            <div class="bars-x mono" id="barsX"></div>
+          </div>
+        </div>
+
+        <div class="inbox-tools">
+          <input id="searchInput" type="search" placeholder="Search name, email, or message…" aria-label="Search messages" />
+          <span class="hero-row" style="gap:10px"><button class="btn btn-sm" id="readAllBtn" type="button">Mark all read</button></span>
+        </div>
+        <div id="msgList" class="msg-list"></div>
       </div>
-      <span class="hero-row" style="gap:10px">
-        <button class="btn btn-sm" id="readAllBtn" type="button">Mark all read</button>
-        <button class="btn btn-sm" id="refreshBtn" type="button">Refresh</button>
-        <button class="btn btn-sm" id="logoutBtn" type="button">Log out</button>
-      </span>
     </div>
-    <div class="inbox-tools">
-      <input id="searchInput" type="search" placeholder="Search name, email, or message…" aria-label="Search messages" />
-      <span class="seg" role="group" aria-label="Filter">
-        <button type="button" id="filterAll" class="on">All</button>
-        <button type="button" id="filterUnread">Unread</button>
-      </span>
-    </div>
-    <div id="msgList" class="msg-list"></div>
   </div>
 </main>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (function () {
@@ -57,16 +75,31 @@
   var SUPABASE_KEY = "sb_publishable_jky21GxgSF35_XYQWRnnbw_na-NBhOW";
   var ADMIN_EMAIL = "gabbae.dev@gmail.com";
   var $ = function (s) { return document.querySelector(s); };
-  var db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-  var loginForm = $("#loginForm"), inbox = $("#inbox"), list = $("#msgList");
-  var allRows = [], showUnreadOnly = false;
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+  var inbox = $("#inbox"), list = $("#msgList");
+  var allRows = [], view = "all";
+
+  /* Cursor dot (same as main site; hidden on touch by CSS) */
+  (function cursor() {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var dot = document.querySelector(".cursor-dot");
+    if (!dot) return;
+    var t = 0;
+    window.addEventListener("pointermove", function (e) {
+      document.body.classList.add("cursor-on");
+      document.body.classList.remove("cursor-idle");
+      clearTimeout(t);
+      t = setTimeout(function () { document.body.classList.add("cursor-idle"); }, 2500);
+      dot.style.transform = "translate(" + e.clientX + "px," + e.clientY + "px) translate(-50%,-50%)";
+    }, { passive: true });
+  })();
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
-  function showErr(t) { var e = $("#loginErr"); e.textContent = t; e.hidden = false; }
   function ago(iso) {
     if (!iso) return "";
     var mins = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60000));
@@ -75,22 +108,62 @@
     var hrs = Math.round(mins / 60);
     if (hrs < 24) return hrs + "h ago";
     var days = Math.round(hrs / 24);
-    if (days < 7) return days + "d ago";
+    if (days < 14) return days + "d ago";
     return new Date(iso).toLocaleDateString("en-PH", { timeZone: "Asia/Manila" });
+  }
+  function friendlyError(msg) {
+    if (/invalid login credentials/i.test(msg)) return "Wrong email or password. If you never made the account: Supabase → Authentication → Add user → gabbae.dev@gmail.com.";
+    if (/email not confirmed/i.test(msg)) return "Account exists but isn't confirmed. In Supabase → Authentication → Users, tick Auto Confirm (or confirm the user).";
+    if (/row-level security|permission|policy/i.test(msg)) return "Logged in, but the table rules block you. Run the messages-table SQL (with the Owner policies) in the NEW project.";
+    if (/relation .* does not exist|table/i.test(msg)) return "The messages table doesn't exist yet. Run the setup SQL in Supabase → SQL Editor.";
+    return msg;
   }
 
   function render() {
     var q = ($("#searchInput").value || "").toLowerCase();
     var rows = allRows.filter(function (m) {
-      if (showUnreadOnly && m.is_read) return false;
+      if (view === "unread" && m.is_read) return false;
+      if (view === "read" && !m.is_read) return false;
       if (!q) return true;
       return (m.name + " " + m.email + " " + m.message).toLowerCase().indexOf(q) !== -1;
     });
     var unread = allRows.filter(function (m) { return !m.is_read; }).length;
+    var read = allRows.length - unread;
     var week = allRows.filter(function (m) { return Date.now() - new Date(m.created_at).getTime() < 7 * 864e5; }).length;
-    $("#statTotal").textContent = allRows.length + (allRows.length === 1 ? " total" : " total");
-    $("#statUnread").textContent = unread + " unread";
-    $("#statWeek").textContent = week + " this week";
+    $("#statTotal").textContent = allRows.length;
+    $("#statUnread").textContent = unread;
+    $("#statWeek").textContent = week;
+    $("#statRate").textContent = (allRows.length ? Math.round(read / allRows.length * 100) : 0) + "%";
+    $("#navTotal").textContent = allRows.length;
+    $("#navUnread").textContent = unread;
+    $("#navRead").textContent = read;
+
+    /* activity: latest 6 */
+    $("#activityRows").innerHTML = allRows.slice(0, 6).map(function (m) {
+      return '<div class="act-row"><span class="act-dot' + (m.is_read ? "" : " hot") + '"></span>' +
+        '<span><strong>' + esc(m.name) + '</strong><span class="mono"> · ' + esc(m.message.slice(0, 42)) + (m.message.length > 42 ? "…" : "") + '</span></span>' +
+        '<span class="mono">' + esc(ago(m.created_at)) + '</span></div>';
+    }).join("") || '<p class="mono">No activity yet.</p>';
+
+    /* chart: last 7 days */
+    var days = [], counts = [];
+    for (var i = 6; i >= 0; i--) {
+      var d = new Date(); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() - i);
+      days.push(d);
+      var next = new Date(d).getTime() + 864e5;
+      counts.push(allRows.filter(function (m) {
+        var t = new Date(m.created_at).getTime();
+        return t >= d.getTime() && t < next;
+      }).length);
+    }
+    var max = Math.max.apply(null, counts.concat([1]));
+    $("#bars").innerHTML = counts.map(function (c) {
+      return '<span class="bar" style="height:' + Math.max(6, Math.round(c / max * 120)) + 'px" title="' + c + '"></span>';
+    }).join("");
+    $("#barsX").innerHTML = days.map(function (d) {
+      return "<span>" + ["S", "M", "T", "W", "T", "F", "S"][d.getDay()] + "</span>";
+    }).join("");
+
     list.innerHTML = rows.length ? rows.map(function (m) {
       var when = m.created_at ? new Date(m.created_at).toLocaleString("en-PH", { timeZone: "Asia/Manila" }) : "";
       return '<article class="msg-card' + (m.is_read ? "" : " unread") + '" data-id="' + m.id + '">' +
@@ -109,11 +182,13 @@
   function load() {
     list.innerHTML = '<p class="mono">Loading…</p>';
     db.from("messages").select("*").order("created_at", { ascending: false }).then(function (res) {
-      if (res.error) { list.innerHTML = '<p class="mono">Error: ' + esc(res.error.message) + '</p>'; return; }
+      if (res.error) { list.innerHTML = '<p class="mono">Error: ' + esc(friendlyError(res.error.message)) + '</p>'; return; }
       allRows = res.data || [];
       render();
     });
   }
+
+  var db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
   list.addEventListener("click", function (e) {
     var btn = e.target.closest("button[data-act]");
@@ -134,62 +209,50 @@
         })
       : db.from("messages").delete().eq("id", id);
     Promise.resolve(patch).then(function (res) {
-      if (res && res.error) { alert(res.error.message); return; }
+      if (res && res.error) { alert(friendlyError(res.error.message)); return; }
       load();
-    }).catch(function (err) { alert(err.message); });
+    }).catch(function (err) { alert(friendlyError(err.message)); });
   });
 
+  $$(".side-link").forEach(function (b) {
+    b.addEventListener("click", function () {
+      $$(".side-link").forEach(function (x) { x.classList.remove("on"); });
+      b.classList.add("on");
+      view = b.dataset.view;
+      render();
+    });
+  });
   $("#searchInput").addEventListener("input", render);
-  $("#filterAll").addEventListener("click", function () {
-    showUnreadOnly = false;
-    $("#filterAll").classList.add("on"); $("#filterUnread").classList.remove("on");
-    render();
-  });
-  $("#filterUnread").addEventListener("click", function () {
-    showUnreadOnly = true;
-    $("#filterUnread").classList.add("on"); $("#filterAll").classList.remove("on");
-    render();
-  });
   $("#readAllBtn").addEventListener("click", function () {
     var ids = allRows.filter(function (m) { return !m.is_read; }).map(function (m) { return m.id; });
     if (!ids.length) return;
     db.from("messages").update({ is_read: true }).in("id", ids).then(function (res) {
-      if (res.error) { alert(res.error.message); return; }
+      if (res.error) { alert(friendlyError(res.error.message)); return; }
       load();
     });
   });
   $("#refreshBtn").addEventListener("click", load);
   $("#logoutBtn").addEventListener("click", function () {
     db.auth.signOut().then(function () {
-      inbox.hidden = true; loginForm.hidden = false;
+      window.location.replace("./login.html");
     });
   });
 
-  loginForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var btn = $("#loginBtn");
-    btn.disabled = true; btn.textContent = "Logging in…";
-    db.auth.signInWithPassword({ email: $("#adminEmail").value.trim(), password: $("#adminPass").value })
-      .then(function (res) {
-        if (res.error) { showErr(res.error.message); return; }
-        if ((res.data.user && res.data.user.email || "").toLowerCase() !== ADMIN_EMAIL) {
-          db.auth.signOut();
-          showErr("This account is not the inbox owner.");
-          return;
-        }
-        loginForm.hidden = true; inbox.hidden = false;
-        load();
-      })
-      .catch(function (err) { showErr(err.message); })
-      .then(function () { btn.disabled = false; btn.textContent = "Log in"; });
-  });
+  function enter() {
+    var note = $("#authNote");
+    if (note) note.hidden = true;
+    $("#sideUser").textContent = ADMIN_EMAIL;
+    try {
+      $("#dashDate").textContent = "Welcome back! " + new Date().toLocaleDateString("en-PH", { weekday: "long", month: "long", day: "numeric", timeZone: "Asia/Manila" }) + ".";
+    } catch (_) {}
+    inbox.hidden = false;
+    load();
+  }
 
   db.auth.getSession().then(function (res) {
     var email = res.data.session && res.data.session.user && res.data.session.user.email;
-    if (email && email.toLowerCase() === ADMIN_EMAIL) {
-      loginForm.hidden = true; inbox.hidden = false;
-      load();
-    }
+    if (email && email.toLowerCase() === ADMIN_EMAIL) enter();
+    else window.location.replace("./login.html");
   });
 })();
 </script>
