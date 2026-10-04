@@ -501,7 +501,7 @@
       return last && Date.now() - last < CF_RATE_MS;
     } catch (_) { return false; }
   }
-  if (cf) cf.addEventListener("submit", async (e) => {
+  if (cf) cf.addEventListener("submit", (e) => {
     e.preventDefault();
     clearContactErrs();
     const n = $("#cfName").value.trim(), m = $("#cfEmail").value.trim(), t = $("#cfMsg").value.trim();
@@ -525,40 +525,44 @@
       if (fe) { fe.textContent = "Please wait a minute before sending again."; fe.hidden = false; }
       return;
     }
-    const sendBtn = $("#cfSend");
-    const okNote = (msg) => { const el = $("#cfOk"); el.textContent = msg; el.hidden = false; };
+    const sendBtn = document.getElementById("cfSend");
+    const okEl = document.getElementById("cfOk");
+    const errEl = document.getElementById("cfErr");
+    function okNote(msg) { if (okEl) { okEl.textContent = msg; okEl.hidden = false; } if (errEl) { errEl.textContent = ""; errEl.hidden = true; } }
+    function errNote(msg) { if (errEl) { errEl.textContent = msg; errEl.hidden = false; } }
     sendBtn.disabled = true;
     sendBtn.textContent = "Sending…";
-    let emailed = false, saved = false;
-    try {
-      const r = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({
-          access_key: "1d503400-36a0-4ad8-9b26-ca8d14ed20fe",
-          name: n, email: m, message: t,
-          subject: "New portfolio message from " + n,
-          from_name: n
-        })
-      });
-      const data = await r.json().catch(() => ({}));
-      emailed = r.ok && !!data.success;
-    } catch (_) {}
-    if (window.supabase) {
+    function withTimeout(promise, ms) {
+      let t = 0;
+      const gate = new Promise(function (_, rej) { t = setTimeout(function () { rej(new Error("timeout")); }, ms); });
+      return Promise.race([promise.then(function (v) { clearTimeout(t); return v; }, function (e) { clearTimeout(t); throw e; }), gate]);
+    }
+    const web3 = withTimeout(fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ access_key: "1d503400-36a0-4ad8-9b26-ca8d14ed20fe", name: n, email: m, message: t, subject: "New portfolio message from " + n, from_name: n })
+    }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return r.ok && !!d.success; }); }).catch(function () { return false; }), 10000);
+    const sb = (window.supabase ? withTimeout((function () {
       try {
         const db = supabase.createClient("https://sbqxizjtgdfixvnwtbry.supabase.co", "sb_publishable_jky21GxgSF35_XYQWRnnbw_na-NBhOW");
-        const res = await db.from("messages").insert({ name: n, email: m, message: t });
-        saved = !res.error;
-      } catch (_) {}
-    }
-    if (emailed || saved) {
-      okNote("Message sent! I'll get back to you within a day.");
-      cf.reset();
-    } else {
-      okNote("Couldn't send just now — email me directly at j.doruca109@gmail.com.");
-    }
-    sendBtn.disabled = false;
-    sendBtn.textContent = "Send message";
+        return db.from("messages").insert({ name: n, email: m, message: t }).then(function (res) { return !res.error; });
+      } catch (_) { return Promise.resolve(false); }
+    })(), 10000).catch(function () { return false; }) : Promise.resolve(false));
+    Promise.allSettled([web3, sb]).then(function (rs) {
+      const ok = rs.some(function (r) { return r.status === "fulfilled" && r.value === true; });
+      if (ok) {
+        okNote("Message sent! I'll get back to you within a day.");
+        cf.reset();
+        cf.dataset.startedAt = String(Date.now());
+        try { localStorage.setItem(CF_LS, String(Date.now())); } catch (_) {}
+      } else {
+        errNote("Couldn't send just now — email me directly at j.doruca109@gmail.com.");
+      }
+    }).finally(function () {
+      sendBtn.disabled = false;
+      sendBtn.textContent = "Send message";
+    });
+    return;
   });
   const copyBtn = $("#copyEmail");
   if (copyBtn) copyBtn.addEventListener("click", async () => {
