@@ -115,7 +115,7 @@
     $$(".mask-in").forEach((el) => { el.style.transform = "none"; });
     $$(".shot").forEach((el) => { el.style.opacity = "1"; el.style.visibility = "visible"; });
     $$(".meter i").forEach((el) => { el.style.width = el.dataset.w + "%"; });
-    if (label) label.textContent = "09 / 09";
+    if (label) { const n = String($$("main [data-sec]").length).padStart(2, "0"); label.textContent = n + " / " + n; }
     return;
   }
 
@@ -125,7 +125,7 @@
     gsap.set(".shot", { autoAlpha: 1 });
     gsap.set(".about-cell,.skill,.phase,.reveal-line", { opacity: 1, y: 0 });
     gsap.set(".meter i", { width: (i, el) => el.dataset.w + "%" });
-    if (label) label.textContent = "09 / 09";
+    if (label) { const n = String($$("main [data-sec]").length).padStart(2, "0"); label.textContent = n + " / " + n; }
     return;
   }
 
@@ -307,6 +307,30 @@
     });
   }
 
+  /* ---------- Inspired additions: counters, experience reveals, GitHub meta ---------- */
+  $$("[data-count]").forEach((el) => {
+    const end = +el.dataset.count, o = { v: 0 };
+    gsap.fromTo(o, { v: 0 }, {
+      v: end, duration: 1.4, ease: "power2.out",
+      onUpdate: () => { el.textContent = Math.round(o.v); },
+      scrollTrigger: { trigger: el, start: "top 90%", once: true },
+    });
+  });
+  $$(".stat,.xp,.gh-card").forEach((el, i) => {
+    gsap.fromTo(el, { opacity: 0, y: 32 }, {
+      opacity: 1, y: 0, duration: 0.7, ease: "power3.out", delay: (i % 4) * 0.06,
+      scrollTrigger: { trigger: el, start: "top 90%" },
+    });
+  });
+  (function ghMeta() {
+    const m = $("#ghMeta");
+    if (!m || !window.fetch) return;
+    fetch("https://api.github.com/users/httpsGabbae")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => { if (d && typeof d.public_repos === "number") m.textContent = d.public_repos + " public repositories"; })
+      .catch(() => {});
+  })();
+
   /* ---------- Spice: Manila clock, magnetic CTAs, spotlight, photo drift, easter egg ---------- */
   const clock = $("#manilaClock");
   const paintClock = () => {
@@ -439,10 +463,68 @@
 
   /* ---------- Contact form (Supabase inbox + Gmail forward, no popups) ---------- */
   const cf = $("#contactForm");
+  const CF_MAX = { name: 100, email: 254, message: 2000 };
+  const CF_MIN_MS = 3000;
+  const CF_RATE_MS = 60000;
+  const CF_LS = "v2-last-send";
+  if (cf && !cf.dataset.startedAt) cf.dataset.startedAt = String(Date.now());
+
+  function clearContactErrs() {
+    ["cfName", "cfEmail", "cfMsg"].forEach(function (id) {
+      const inp = document.getElementById(id);
+      const err = document.getElementById(id + "Err");
+      if (inp) inp.removeAttribute("aria-invalid");
+      if (err) { err.textContent = ""; err.hidden = true; }
+    });
+    const fe = document.getElementById("cfErr");
+    if (fe) { fe.textContent = ""; fe.hidden = true; }
+  }
+
+  function setFieldErr(inputId, msg) {
+    const inp = document.getElementById(inputId);
+    const err = document.getElementById(inputId + "Err");
+    if (inp) inp.setAttribute("aria-invalid", "true");
+    if (err) { err.textContent = msg; err.hidden = false; }
+  }
+
+  function isBotSubmit() {
+    const hp = document.getElementById("cfCompany");
+    if (hp && hp.value) return true;
+    const st = cf ? Number(cf.dataset.startedAt || 0) : 0;
+    if (st && Date.now() - st < CF_MIN_MS) return true;
+    return false;
+  }
+
+  function isRateLimited() {
+    try {
+      const last = Number(localStorage.getItem(CF_LS) || 0);
+      return last && Date.now() - last < CF_RATE_MS;
+    } catch (_) { return false; }
+  }
   if (cf) cf.addEventListener("submit", async (e) => {
     e.preventDefault();
-    if (!cf.checkValidity()) { cf.reportValidity(); return; }
+    clearContactErrs();
     const n = $("#cfName").value.trim(), m = $("#cfEmail").value.trim(), t = $("#cfMsg").value.trim();
+    if (!n || n.length < 2) { setFieldErr("cfName", "Please enter your name."); $("#cfName").focus(); return; }
+    if (n.length > CF_MAX.name) { setFieldErr("cfName", "Please keep your name under 100 characters."); $("#cfName").focus(); return; }
+    if (!m) { setFieldErr("cfEmail", "Please enter your email."); $("#cfEmail").focus(); return; }
+    if (m.length > CF_MAX.email) { setFieldErr("cfEmail", "Please keep your email under 254 characters."); $("#cfEmail").focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)) { setFieldErr("cfEmail", "Please enter a valid email address."); $("#cfEmail").focus(); return; }
+    if (!t || t.length < 2) { setFieldErr("cfMsg", "Please enter your message."); $("#cfMsg").focus(); return; }
+    if (t.length > CF_MAX.message) { setFieldErr("cfMsg", "Please keep your message under 2000 characters."); $("#cfMsg").focus(); return; }
+    if (!cf.checkValidity()) { const bad = cf.querySelector(":invalid"); if (bad) bad.focus(); return; }
+    if (isBotSubmit()) {
+      const el = document.getElementById("cfOk");
+      if (el) { el.textContent = "Message sent! I'll get back to you within a day."; el.hidden = false; }
+      cf.reset();
+      cf.dataset.startedAt = String(Date.now());
+      return;
+    }
+    if (isRateLimited()) {
+      const fe = document.getElementById("cfErr");
+      if (fe) { fe.textContent = "Please wait a minute before sending again."; fe.hidden = false; }
+      return;
+    }
     const sendBtn = $("#cfSend");
     const okNote = (msg) => { const el = $("#cfOk"); el.textContent = msg; el.hidden = false; };
     sendBtn.disabled = true;
