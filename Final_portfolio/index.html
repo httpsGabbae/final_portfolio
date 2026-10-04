@@ -31,7 +31,7 @@
     <div class="cursor-dot" aria-hidden="true"></div>
 
     <div class="progress is-idle" aria-hidden="true">
-      <small id="progressLabel">01 / 09</small>
+      <small id="progressLabel">01 / 12</small>
       <div class="bar"><i id="progressFill"></i></div>
     </div>
 
@@ -41,6 +41,7 @@
         <nav class="nav-links" aria-label="Primary">
           <a href="#work">Work</a>
           <a href="#about">About</a>
+          <a href="#experience">Experience</a>
           <a href="#services">Skills</a>
           <a href="#contact">Contact</a>
           <a class="btn" href="#contact"
@@ -134,6 +135,7 @@
     <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile" hidden>
       <a href="#work">Work</a>
       <a href="#about">About</a>
+          <a href="#experience">Experience</a>
       <a href="#services">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -214,6 +216,16 @@
               <path d="m19 12-7 7-7-7" />
             </svg>
           </div>
+        </div>
+      </section>
+
+      <!-- STATS STRIP -->
+      <section class="stats wrap" data-sec aria-label="At a glance">
+        <div class="stats-grid">
+          <div class="stat"><strong><span data-count="4">4</span></strong><span class="mono">Projects built</span></div>
+          <div class="stat"><strong><span data-count="3">3</span>rd</strong><span class="mono">Dept. hackathon</span></div>
+          <div class="stat"><strong><span data-count="2">2</span>+ yrs</strong><span class="mono">Building since 2024</span></div>
+          <div class="stat"><strong class="stat-text">Full-stack</strong><span class="mono">Current focus</span></div>
         </div>
       </section>
 
@@ -451,6 +463,7 @@
               01 — PHP · MySQL · FPDF · 2026
             </p>
             <h3 class="hcard-title">LCC Payroll System</h3>
+                <span class="badge">In progress</span>
             <a
               class="btn"
               style="margin-top: 18px"
@@ -487,6 +500,7 @@
               02 — Monaco · Judge0 · PHP · 2025
             </p>
             <h3 class="hcard-title">LMS Code Compiler</h3>
+                <span class="badge">In progress</span>
             <a
               class="btn"
               style="margin-top: 18px"
@@ -667,9 +681,39 @@
         </div>
       </section>
 
+      <!-- EXPERIENCE -->
+      <section id="experience" data-sec class="experience wrap">
+        <p class="kicker"><b>04</b> — Experience</p>
+        <div class="xp-list">
+          <article class="xp">
+            <div class="xp-date mono">2025 — Present</div>
+            <div>
+              <h3>Systems Builder <em>· School &amp; personal projects</em></h3>
+              <ul>
+                <li>Built a gym management system with user roles, member records, trainer info, and payment tracking.</li>
+                <li>Developing Pay-Wise, a payroll system with attendance, reports, and downloadable PDF payslips.</li>
+                <li>Building a browser-based classroom code compiler using Monaco and Judge0.</li>
+              </ul>
+              <div class="tags"><span>PHP</span><span>MySQL</span><span>Judge0</span><span>FPDF</span></div>
+            </div>
+          </article>
+          <article class="xp">
+            <div class="xp-date mono">2024 — Present</div>
+            <div>
+              <h3>BS Computer Science <em>· Lipa City Colleges</em></h3>
+              <ul>
+                <li>Learning through coursework and hands-on projects, starting with an interactive learning site (LearnEngage).</li>
+                <li>Placed 3rd in the department hackathon, building a project that solves real department problems.</li>
+              </ul>
+              <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Git</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <!-- SKILLS -->
       <section id="services" data-sec class="services wrap">
-        <p class="kicker"><b>04</b> — My Toolkits</p>
+        <p class="kicker"><b>05</b> — My Toolkits</p>
         <div class="skills-grid">
           <div class="skill">
             <div class="skill-top">
@@ -702,7 +746,7 @@
 
       <!-- PROCESS -->
       <section data-sec class="process wrap" aria-label="Workflow">
-        <p class="kicker"><b>05</b> — How I work</p>
+        <p class="kicker"><b>06</b> — How I work</p>
         <div class="phase-grid">
           <div class="phase">
             <span class="phase-n">01</span>
@@ -769,11 +813,27 @@
         </div>
       </section>
 
+      <!-- GITHUB -->
+      <section id="github" data-sec class="github wrap">
+        <p class="kicker"><b>07</b> — GitHub</p>
+        <div class="gh-card">
+          <div class="gh-top">
+            <div><strong>github.com/httpsGabbae</strong><span class="mono" id="ghMeta">Contribution activity</span></div>
+            <a class="btn" href="https://github.com/httpsGabbae" target="_blank" rel="noopener">View profile
+              <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></a>
+          </div>
+          <div class="gh-chart">
+            <img src="https://ghchart.rshah.org/22d3ee/httpsGabbae" alt="GitHub contribution chart for httpsGabbae" loading="lazy" onerror="this.parentNode.classList.add('is-empty')" />
+            <p class="gh-empty mono">Chart unavailable right now — see my profile on GitHub.</p>
+          </div>
+        </div>
+      </section>
+
       <!-- CONTACT -->
       <section id="contact" data-sec class="contact wrap">
         <div class="sec-head">
           <div>
-            <p class="kicker"><b>06</b> — Contact</p>
+            <p class="kicker"><b>08</b> — Contact</p>
             <h2 class="contact-title">Say hi — let&apos;s talk.</h2>
             <p>
               Have an idea, a project, or something interesting you want to
@@ -940,37 +1000,46 @@
           <form class="contact-form" id="contactForm" novalidate>
             <div class="frow">
               <div>
-                <label class="mono" for="cfName">Name</label
-                ><input
+                <label class="mono" for="cfName">Name</label><input
                   id="cfName"
                   name="name"
                   required
+                  minlength="2"
+                  maxlength="100"
                   placeholder="Your name"
                   autocomplete="name"
+                  aria-describedby="cfNameErr"
                 />
+                <p class="field-error" id="cfNameErr" hidden></p>
               </div>
               <div>
-                <label class="mono" for="cfEmail">Email</label
-                ><input
+                <label class="mono" for="cfEmail">Email</label><input
                   id="cfEmail"
                   name="email"
                   type="email"
                   required
+                  maxlength="254"
                   placeholder="you@mail.com"
                   autocomplete="email"
+                  aria-describedby="cfEmailErr"
                 />
+                <p class="field-error" id="cfEmailErr" hidden></p>
               </div>
             </div>
             <div>
-              <label class="mono" for="cfMsg">Message</label
-              ><textarea
+              <label class="mono" for="cfMsg">Message</label><textarea
                 id="cfMsg"
                 name="message"
                 rows="4"
                 required
+                minlength="2"
+                maxlength="2000"
                 placeholder="Hi Gabbae, I saw your payroll system and…"
+                aria-describedby="cfMsgErr"
               ></textarea>
+              <p class="field-error" id="cfMsgErr" hidden></p>
             </div>
+            <input id="cfCompany" name="company" type="text" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <div class="hero-row">
               <button class="btn btn-solid" id="cfSend" type="submit">
                 Send message
@@ -980,9 +1049,9 @@
               </button>
             </div>
             <p class="form-ok" id="cfOk" hidden>
-              Thanks! Opening your mail app — or reach me at
-              j.doruca109@gmail.com.
+              Message sent! I'll get back to you within a day.
             </p>
+            <p class="form-ok form-err" id="cfErr" hidden role="alert"></p>
           </form>
         </div>
       </section>
